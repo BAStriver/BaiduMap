@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>当前位置</title>
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zEmj4dVtxEI2nDXxeiCge79GNRh6lLtw"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- 普通地图 -->
+    <script src='js/map.js'></script>
+    <!-- 站点地图 -->
+    <script src='js/baiduMap.js'></script>
+  
+  
+    <style>
+      #wechatMap {height:90%; overflow: hidden;margin-top: 2rem;
+        border-radius: 20px;}
+      .showView {
+        background-color: white;
+        margin:3rem;
+        border-radius: 14px;
+        box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
+        padding: 1rem;
+        height: 100%;
+      }
+      html,body {
+        height: 90%;
+      }
+    </style>
+
+  </head>
+  
+  <body>
+    <div class='showView'> <!--TODO-->
+      <span class="label label-info" id='currentPoint'>当前坐标：</span>
+      <!-- 操作地图 -->
+      <div id='operateDiv' class='row'>
+        <div class="col-md-2">
+          <select class='form-control' id='mapStyle'>
+            <option>-- 更换地图样式 --</option>
+            <option value="normal">默认地图样式</option>
+            <option value="light">地图风格：清新蓝风格</option>
+            <option value="dark">地图风格：黑夜风格</option>
+            <option value="redalert">地图风格：红色警戒风格</option>
+            <option value="googlelite">地图风格：精简风格</option>
+            <option value="grassgreen">地图风格：自然绿风格</option>
+            <option value="midnight">地图风格：午夜蓝风格</option>
+            <option value="pink">地图风格：浪漫粉风格</option>
+            <option value="darkgreen">地图风格：青春绿风格</option>
+            <option value="bluish">地图风格：清新蓝绿风格</option>
+            <option value="grayscale">地图风格：高端灰风格</option>
+            <option value="hardedge">地图风格：强边界风格</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input class='form-control' placeholder='请输入要查询的地点名' id='searchPlace'>
+          <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+        </div>
+        <div class="col-md-2">
+          <input class='form-control' placeholder='请输入起点' id='searchStart'>
+        </div>
+        <div class="col-md-2">
+          <input class='form-control' placeholder='请输入终点' id='searchEnd'>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-default btn-md" id="searchWay"><span class="glyphicon glyphicon-search"></span> 查询</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <input class='form-control' placeholder='请输入经度' id='searchLongitude'>
+        </div>
+        <div class="col-md-2">
+          <input class='form-control' placeholder='请输入纬度' id='searchLatitude'>
+        </div>
+      </div>
+    
+      <!--地图-->
+      <div id="wechatMap"></div>
+  
+      <!--线路规划-->
+      <div id="result"></div>
+      
+      <script>
+        CustomMap.initAllMap('wechatMap'); // 初始化地图
+        wechatMap.init(); // 绑定规划路线事件
+      </script>
+    </div>
+  </body>
+</html>
